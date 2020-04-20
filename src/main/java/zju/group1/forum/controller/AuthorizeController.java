@@ -96,7 +96,8 @@ public class AuthorizeController {
             message.setMessage("邮箱或密码错误");
         } else {
             message.setState(true);
-            message.setMessage("登陆成功！");
+            String name = userMapper.searchName(email);
+            message.setMessage("登陆成功！;" + name);
             String authorizeToken = encryptService.getMD5Code(email);
             redisProvider.setAuthorizeToken(authorizeToken, email);
             message.setAuthorizeToken(authorizeToken);

@@ -20,4 +20,7 @@ public interface UserMapper {
 
     @Select("select count(*) from user where name=#{name}")
     int isUserExist(User user);
+
+    @Select("select name from user where email = #{email}")
+    String searchName(String email);
 }
